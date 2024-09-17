@@ -1,0 +1,100 @@
+@import "variaveis.less";
+@import "reset.less";
+
+
+body{
+    max-width: 576px;
+    width: 100%;
+    background-color: @background-color;
+    font-family: @texto-secundario;
+    color: @cor-secundaria;
+    font-size: 14px;
+}
+
+.white-square{
+    background-color: @branco;
+    margin: 5% 0;
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid rgb(208, 212, 216);
+}
+
+header{
+    font-weight: bold;
+
+    .background-image{
+        background-image: url(https://maxcardapio.com/uploads/images/2024/06/design-sem-nome-1718825059.jpg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 300px;
+        max-width: 100%;
+        position: relative;
+    }
+    
+    .logo{
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+
+        &-img{
+            width: 120px;
+            margin-top: 25%;
+            display: flex;
+            border-radius: 50%;
+            border: 10px solid @branco;
+            }
+    }
+
+    .perfil{
+        padding-top: 50px;
+        border-radius: 16px;
+        text-align: center;
+        position: absolute;
+        margin-top: 37%;
+        width: 100%;
+
+        .title{
+            font-family: @texto-principal;
+            color: @cor-primaria;
+            margin-left: 10%;
+        }
+
+        ul{
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 30px;
+            margin-left: 5%;
+        }
+
+        a{
+            text-decoration: none;
+            color: @cor-secundaria;
+            
+        }
+
+    }
+}
+
+main{
+
+    .taxaseEntregas{
+        font-weight: bold;
+        margin-top: 20%;
+    }
+
+    .title,
+    span{
+        color: @cor-primaria;
+        font-weight: bold;
+    }
+
+    .card-text{
+        color: @cor-secundaria;
+        margin: 8px 0;
+    }
+
+}
+

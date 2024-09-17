@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul {
+  list-style: none;
+}
+body {
+  max-width: 576px;
+  width: 100%;
+  background-color: #f4f5f7;
+  font-family: "Roboto", 'sans-serif';
+  color: #6b7280;
+  font-size: 14px;
+}
+.white-square {
+  background-color: #fff;
+  margin: 5% 0;
+  border-radius: 8px;
+  padding: 10px;
+  border: 1px solid #d0d4d8;
+}
+header {
+  font-weight: bold;
+}
+header .background-image {
+  background-image: url(https://maxcardapio.com/uploads/images/2024/06/design-sem-nome-1718825059.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 300px;
+  max-width: 100%;
+  position: relative;
+}
+header .logo {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+}
+header .logo-img {
+  width: 120px;
+  margin-top: 25%;
+  display: flex;
+  border-radius: 50%;
+  border: 10px solid #fff;
+}
+header .perfil {
+  padding-top: 50px;
+  border-radius: 16px;
+  text-align: center;
+  position: absolute;
+  margin-top: 37%;
+  width: 100%;
+}
+header .perfil .title {
+  font-family: "Lobster Two", serif;
+  color: #374151;
+  margin-left: 10%;
+}
+header .perfil ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 30px;
+  margin-left: 5%;
+}
+header .perfil a {
+  text-decoration: none;
+  color: #6b7280;
+}
+main .taxaseEntregas {
+  font-weight: bold;
+  margin-top: 20%;
+}
+main .title,
+main span {
+  color: #374151;
+  font-weight: bold;
+}
+main .card-text {
+  color: #6b7280;
+  margin: 8px 0;
+}
