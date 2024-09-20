@@ -21,7 +21,7 @@ Bem-vindo ao Doce e Chocolate! Esta é uma loja online de doces criada para torn
 Estamos trabalhando em melhorias contínuas para oferecer uma experiência ainda melhor:
 
 * :key: Adicionar login e registro de usuários.
-* :credit_card: Integrar opções de pagamento como PayPal e Stripe.
+* :credit_card: Integrar opções de pagamento.
 * :star: Implementar um sistema de avaliações para os produtos.
 * :shopping_cart: Criar um carrinho de compras integrado.
 * :memo: Oferecer supor:te ao cliente e um formulário de contato.
