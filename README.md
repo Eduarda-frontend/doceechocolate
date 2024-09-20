@@ -10,11 +10,11 @@ Bem-vindo ao Doce e Chocolate! Esta é uma loja online de doces criada para torn
 * :chocolate_bar: Organizamos os produtos em categorias, como chocolates, bolos e balas, para facilitar sua busca.
 
 ### Tecnologias Usadas :computer:
-`:desktop_computer: Frontend: HTML5, CSS3, JavaScript` 
+:desktop_computer: `Frontend: HTML5, CSS3, JavaScript` 
 
-`:books: Bibliotecas: Bootstrap`
+:books:  `Bibliotecas: Bootstrap`
 
-`:hammer_and_wrench: Ferramentas: Git, GitHub, Grunt`
+:hammer_and_wrench:`Ferramentas: Git, GitHub, Grunt`
 
 ### Próximos Passos :rocket:
 
