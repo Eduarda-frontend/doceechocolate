@@ -27,6 +27,6 @@ Estamos trabalhando em melhorias contínuas para oferecer uma experiência ainda
 * :memo: Oferecer supor:te ao cliente e um formulário de contato.
 
 
-### Contribua! :handshake:1
+### Contribua! :handshake:
 
 Sua ajuda é sempre bem-vinda! Se você tiver sugestões, encontrar problemas ou quiser contribuir, sinta-se à vontade para abrir uma issue ou enviar um pull request.
