@@ -4,7 +4,7 @@ module.exports = function (grunt){
         less:{
             development:{
                 files:{
-                    'dev/styles/main.css': 'src/styles/main.less'
+                    'dev/styles/style.css': 'src/styles/style.less'
                 }
             },
             production:{
@@ -12,7 +12,7 @@ module.exports = function (grunt){
                     compress:true
                 },
                 files:{
-                    'dist/styles/main.min.css': 'src/styles/main.less'
+                    'dist/styles/style.min.css': 'src/styles/style.less'
                 }
             }
         },
@@ -32,7 +32,7 @@ module.exports = function (grunt){
                     patterns:[
                         {
                             match:'ENDERECO_CSS',
-                            replacement:'./styles/main.css'
+                            replacement:'./styles/style.css'
                         },
                         {
                             match:'ENDERECO_JS',
@@ -54,7 +54,7 @@ module.exports = function (grunt){
                     patterns:[
                         {
                             match:'ENDERECO_CSS',
-                            replacement:'./styles/main.min.css'
+                            replacement:'./styles/style.min.css'
                         },
                         {
                             match:'ENDERECO_JS',
@@ -97,8 +97,9 @@ module.exports = function (grunt){
         grunt.loadNpmTasks('grunt-replace');
         grunt.loadNpmTasks('grunt-contrib-htmlmin');
         grunt.loadNpmTasks('grunt-contrib-uglify');
-        
-        grunt.registerTask('default', ['watch']);
+        grunt.loadNpmTasks('grunt-contrib-copy');
+
+        grunt.registerTask('default', ['watch', 'copy']);
         grunt.registerTask('build', ['less:production', 'htmlmin:dist', 'replace:dist','uglify']);
     
 };
