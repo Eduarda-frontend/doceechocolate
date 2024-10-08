@@ -1,0 +1,95 @@
+
+    .background__image{
+        background-image: url(https://maxcardapio.com/uploads/images/2024/06/design-sem-nome-1718825059.jpg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 300px;
+        max-width: 100%;
+        position: relative;
+    }
+    
+    .logo{
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+
+        &__img{
+            width: 120px;
+            margin-top: 17%;
+            display: flex;
+            border-radius: 50%;
+            border: 8px solid @branco;
+            }
+    }
+
+    .perfil{
+        border-radius: 16px;
+        text-align: center;
+        position: absolute;
+        margin-top: 30%;
+        width: 100%;
+
+        .title{
+            font-family: @texto-principal;
+            color: @cor-primaria;
+        }
+
+        ul{
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 30px;
+            margin-left: 5%;
+        }
+
+        a{
+            text-decoration: none;
+            color: @cor-secundaria;
+            
+        }
+
+    }
+
+
+@media @md768{
+    .logo__img{
+        margin-top: 21%;
+    }
+}
+
+@media @lg992{
+
+        .background__image{
+            background-size: cover;
+        }
+
+        .perfil{
+            padding: 8px;
+            margin-top: 23%;
+        }
+
+        .logo__img{
+            margin-top: 17%;
+        }
+}
+
+@media @xl1200{
+
+        .logo{
+            justify-content: start;
+            margin-left: 1%;
+    
+            &__img{
+                width: 15%;
+                border-radius: 28%; 
+                margin-top: 22%;    
+                }
+        }
+
+        .perfil{
+            margin-top: 22%;
+        }
+
+}
