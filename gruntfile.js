@@ -16,6 +16,24 @@ module.exports = function (grunt){
                 }
             }
         },
+        imagemin: {
+            dev: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/img/',
+                    src: ['**/*.{png,jpg,gif}'],
+                    dest: 'dev/img/' 
+                }]
+            },
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/img/',
+                    src: ['**/*.{png,jpg,gif}'],
+                    dest: 'dist/img/'
+                }]
+            }
+        },
         watch:{
             less:{
                 files:['src/styles/**/*.less'],
@@ -24,6 +42,10 @@ module.exports = function (grunt){
             html:{
                 files:['src/index.html'],
                 tasks:['replace:dev']
+            },
+            images: {
+                files: ['src/img/**/*.{png,jpg,gif}'],
+                tasks: ['imagemin']
             }
         },
         replace:{
@@ -98,8 +120,9 @@ module.exports = function (grunt){
         grunt.loadNpmTasks('grunt-contrib-htmlmin');
         grunt.loadNpmTasks('grunt-contrib-uglify');
         grunt.loadNpmTasks('grunt-contrib-copy');
+        grunt.loadNpmTasks('grunt-contrib-imagemin');
 
         grunt.registerTask('default', ['watch', 'copy']);
-        grunt.registerTask('build', ['less:production', 'htmlmin:dist', 'replace:dist','uglify']);
+        grunt.registerTask('build', ['less:production', 'htmlmin:dist', 'replace:dist','imagemin:dist', 'uglify']);
     
 };
