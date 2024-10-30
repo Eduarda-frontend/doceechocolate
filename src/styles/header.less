@@ -6,6 +6,22 @@
         height: 300px;
         max-width: 100%;
         position: relative;
+        opacity: 1;
+    }
+
+    .background__pink{
+        background-color: #FFC8DD;
+        padding: 0.25rem;
+    }
+
+    .lista_item a{
+        color: @branco;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .lista_item a:hover{
+        text-decoration: underline;
     }
     
     .logo{
@@ -49,6 +65,20 @@
             color: @cor-secundaria;
             
         }
+
+        .dropdown:hover > .dropdown-menu, .dropend:hover > .dropdown-menu{
+            display: block;
+            margin-top: 25 em;
+        }
+
+        .dropend:hover > .dropdown-menu{
+            position: absolute;
+            top: 0;
+            left: 100%;
+            margin-left: .125 em;
+
+        }
+        
 
     }
 
