@@ -1,12 +1,31 @@
 
     .background__image{
-        background-image: url(https://maxcardapio.com/uploads/images/2024/06/design-sem-nome-1718825059.jpg);
+        background-image: url('../img/imagens/background.jpg');
         background-repeat: no-repeat;
         background-size: contain;
         height: 300px;
         max-width: 100%;
         position: relative;
+        opacity: 1;
     }
+
+    .background__pink{
+        background-color: @rosa;
+        padding: 0.25rem;
+
+        .lista_item a{
+            color: @branco;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .lista_item a:hover{
+            text-decoration: underline;
+            color: @dourado;
+        }
+    }
+
+
     
     .logo{
         display: flex;
@@ -49,6 +68,20 @@
             color: @cor-secundaria;
             
         }
+
+        .dropdown:hover > .dropdown-menu, .dropend:hover > .dropdown-menu{
+            display: block;
+            margin-top: 25 em;
+        }
+
+        .dropend:hover > .dropdown-menu{
+            position: absolute;
+            top: 0;
+            left: 100%;
+            margin-left: .125 em;
+
+        }
+        
 
     }
 
