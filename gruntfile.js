@@ -4,7 +4,7 @@ module.exports = function (grunt){
         less:{
             development:{
                 files:{
-                    'dev/styles/style.css': 'src/styles/style.less'
+                    'dev/styles/style.css': 'src/styles/**/style.less'
                 }
             },
             production:{
@@ -12,7 +12,7 @@ module.exports = function (grunt){
                     compress:true
                 },
                 files:{
-                    'dist/styles/style.min.css': 'src/styles/style.less'
+                    'dist/styles/style.min.css': 'src/styles/**/style.less'
                 }
             }
         },
@@ -40,7 +40,7 @@ module.exports = function (grunt){
                 tasks:['less:development']
             },
             html:{
-                files:['src/index.html'],
+                files:['src/*.html'],
                 tasks:['replace:dev']
             },
             images: {
@@ -66,7 +66,7 @@ module.exports = function (grunt){
                     {
                         expand: true,
                         flatten: true,
-                        src:['src/index.html'],
+                        src:['src/*.html'],
                         dest:'dev/'
                     }
                 ]
@@ -88,7 +88,7 @@ module.exports = function (grunt){
                     {
                         expand: true,
                         flatten: true,
-                        src:['src/index.html'],
+                        src:['src/*.html'],
                         dest:'dist/'
                     }
                 ]
@@ -101,7 +101,7 @@ module.exports = function (grunt){
                 collapseWhitespace: true
                 },
                 files: {                                 
-                'dist/index.html': 'src/index.html',   
+                'dist/*.html': 'src/*.html',   
                 }
             },
         },

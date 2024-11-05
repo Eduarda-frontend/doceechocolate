@@ -1,0 +1,53 @@
+.main {
+    margin-top: 5%;
+}
+
+.taxas-entregas {
+    font-weight: bold;
+}
+
+.title,
+span {
+    color: @cor-primaria;
+    font-weight: bold;
+}
+
+.taxas-entregas__bag {
+    display: none;
+}
+
+@media @md768 {
+    .main {
+        margin-top: 14%;
+    }
+}
+
+@media @lg992 {
+
+    .taxas-entregas {
+
+        position: sticky;
+        top: 10px;
+
+        &__bag {
+
+            &-body {
+                background-color: #f1efef;
+                display: flex;
+                height: 170px;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            &-icon {
+                font-size: 72px;
+            }
+
+            &-text {
+                font-size: 18px;
+                font-weight: normal;
+            }
+        }
+
+    }
+}
