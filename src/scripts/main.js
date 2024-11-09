@@ -70,27 +70,29 @@ $(document).ready(function () {
                 }, 1000);
             });
     });
-
+    
+    
     $('.section__bento-cake button').click(function () {
+        
         const produto = $(this).find('h3').text();
         const imgProduto = $(this).find('img').attr('src');
         const altProduto = $(this).find('img').attr('alt');
-        const preco = $(this).find('span').text();
+        const precoTexto = $(this).find('span').text();
+
+        $('#bag').addClass('d-none');
+        $('#lista_pedido').removeClass('d-none');
 
         $('#lista_pedido')
         .html(`
         <li class="d-flex justify-content-center">
         <img class="img-thumbnail rounded my-4" width="150"
-            src="${imgProduto}" alt="${altProduto}">
+        src="${imgProduto}" alt="${altProduto}">
         </li>
-        <li>Quantidade:</li>
-        <li>Produto:${produto}</li>
-        <li>Sabor:</li>
-        <li>Observação:</li>
-        <li>Valor:${preco}</li>
-        <hr>
-        <li>Taxa de entrega:</li>
-        <li>TOTAL:</li>
+        <li class="fw-bold">Quantidade:</li>
+        <li class="fw-bold">Produto:${produto}</li>
+        <li class="fw-bold">Sabor:</li>
+        <li class="fw-bold">Observação:</li>
+        <li class="fw-bold">Valor:${precoTexto}</li>
         `)
     });
 
@@ -108,6 +110,7 @@ $(document).ready(function () {
             const cidade = $('#cidade').val();
             const estado = $('#estado').val();
             const formaPagamento = $('#formaPagamento').val();
+            const valorTotal = $('#span').val();
 
             const mensagem = `Dados do cliente:
             
@@ -129,7 +132,7 @@ $(document).ready(function () {
             \nObservação:
             \nValor:
 
-            \n\nTaxa de entrega:
+            \n\nTaxa de entrega: 
             \nValor total:
             \nForma de pagamento: ${formaPagamento}
             `;
