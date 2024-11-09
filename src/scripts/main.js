@@ -9,6 +9,7 @@ $(document).ready(function () {
         placeholder: '(00) 00000-0000',
         required: true
     });
+
     $('form').validate({
         rules: {
             nome: {
@@ -39,7 +40,7 @@ $(document).ready(function () {
                 alert(`Faltam ${camposIncorretos} campos por preen cher!`);
             }
         }
-    })
+    });
 
     $('#btn-buscar-cep').click(function () {
 
@@ -68,7 +69,30 @@ $(document).ready(function () {
                     $(botao).find('span').addClass('d-none');
                 }, 1000);
             });
-    })
+    });
+
+    $('.section__bento-cake button').click(function () {
+        const produto = $(this).find('h3').text();
+        const imgProduto = $(this).find('img').attr('src');
+        const altProduto = $(this).find('img').attr('alt');
+        const preco = $(this).find('span').text();
+
+        $('#lista_pedido')
+        .html(`
+        <li class="d-flex justify-content-center">
+        <img class="img-thumbnail rounded my-4" width="150"
+            src="${imgProduto}" alt="${altProduto}">
+        </li>
+        <li>Quantidade:</li>
+        <li>Produto:${produto}</li>
+        <li>Sabor:</li>
+        <li>Observação:</li>
+        <li>Valor:${preco}</li>
+        <hr>
+        <li>Taxa de entrega:</li>
+        <li>TOTAL:</li>
+        `)
+    });
 
     $('#btn_finalizar').click(function () {
         $('form').submit(function (event) {
@@ -113,6 +137,6 @@ $(document).ready(function () {
             const linkWhatsapp = `https://wa.me/556499275875?text=${mensagemUrl}`
             window.open(linkWhatsapp, '_blank');
         });
-    })
+    });
 
 })
