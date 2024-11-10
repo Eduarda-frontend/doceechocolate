@@ -30,30 +30,25 @@ function BuscarEndereco(botao, campos) {
             });
     };
 };
+
 function Pedido(botao) {
-    this.produto = '';
-    this.imgProduto = '';
-    this.altProduto = '';
-    this.precoTexto = '';
+
+    this.produto = $(botao).find('h3').text();
+    this.imgProduto = $(botao).find('img').attr('src');
+    this.altProduto = $(botao).find('img').attr('alt');
+    this.precoTexto = $(botao).find('span').text();
     this.listaPedidos = [];
 
     this.coletaInformacoes = function () {
 
-        this.produto = $(botao).find('h3').text();
-        this.imgProduto = $(botao).find('img').attr('src');
-        this.altProduto = $(botao).find('img').attr('alt');
-        this.precoTexto = $(botao).find('span').text();
-
         this.criaPedidoHtml = function () {
             return `
+            <li>
+            <ul class="p-0 mb-3">
             <li class="d-flex justify-content-center">
             <img class="img-thumbnail rounded my-4" width="150"
             src="${this.imgProduto}" alt="${this.altProduto}">
             </li>
-            <div class="d-flex">
-            <li class="fw-bold">Quantidade:</li>
-            <li></li>
-            </div>
             <div class="d-flex">
                 <li class="fw-bold">Produto:</li>
                 <li>${this.produto}</li>
@@ -69,8 +64,14 @@ function Pedido(botao) {
             <div class="d-flex">
                 <li class="fw-bold">Valor:</li>
                 <li>R$ ${this.precoTexto}</li>
-            </div>`;
+            </div>
+            </ul>
+            <button id="btn-remove_pedido"  class="text-danger">
+            <i class="bi bi-trash3-fill"></i>
+            Remover</button>
+            </li>`;
         }
+
     }
 
     this.adicionaPedido = function () {
@@ -84,8 +85,69 @@ function Pedido(botao) {
         });
 
         $('#lista_pedido').append(pedidoHtml);
+        $('#lista_seu_pedido').append(pedidoHtml);
+
     };
-}
+
+};
+
+function EnviaPedido(botao) {
+
+    const pedido = new Pedido(botao);
+
+    pedido.coletaInformacoes()
+    console.log(pedido);
+
+    this.produto = pedido.produto;
+    this.precoTexto = pedido.precoTexto;
+
+    this.nome = $('#nome').val();
+    this.celular = $('#celular').val();
+    this.telefone = $('#telefone').val();
+    this.cep = $('#cep').val();
+    this.endereco = $('#endereco').val();
+    this.complemento = $('#complemento').val();
+    this.bairro = $('#bairro').val();
+    this.cidade = $('#cidade').val();
+    this.estado = $('#estado').val();
+    this.formaPagamento = $('#formaPagamento').val();
+
+    this.mensagem = function () {
+        return `
+        Dados do cliente:
+            
+            \n\nNome: ${this.nome}
+            \nTelefone: ${this.telefone}
+            \nCelular: ${this.celular} 
+            \nCEP: ${this.cep}
+            \nEndereço: ${this.endereco}
+            \nComplemento: ${this.complemento}
+            \nBairro: ${this.bairro}
+            \nCidade: ${this.cidade}
+            \nEstado: ${this.estado}
+
+            \n\nPedido:
+
+            \n\nProduto:${this.produto}
+            \nSabor:
+            \nObservação:
+            \nValor:${this.precoTexto}
+
+            \n\nTaxa de entrega: 
+            \nValor total:${this.precoTexto}
+            \nForma de pagamento: ${this.formaPagamento}
+            `
+
+    };
+    this.mensagemUrl = encodeURIComponent(this.mensagem());
+    this.linkWhatsapp = `https://wa.me/556499275875?text=${this.mensagemUrl}`
+
+    this.enviarMensagem = function () {
+
+        window.open(this.linkWhatsapp, '_blank');
+    }
+
+};
 
 $(document).ready(function () {
     $('#cep').mask('00000-000', {
@@ -149,8 +211,6 @@ $(document).ready(function () {
 
     //Adiciona o item ao carrinho
 
-
-
     $('.section__bento-cake button').click(function () {
 
         const pedido = new Pedido(this);
@@ -160,83 +220,46 @@ $(document).ready(function () {
 
         $('#bag').addClass('d-none');
         $('#lista_pedido').removeClass('d-none');
+
     });
-
-    $('#btn-informacoes_pedido').click(function () {
-        $('#lista_seu_pedido')
-            .html(`
-        <li class="d-flex justify-content-center">
-            <img class="img-thumbnail rounded my-4" width="150"
-            src="${imgProduto}" alt="${altProduto}">
-        </li>
-
-        <div class="d-flex">
-            <li class="fw-bold">Quantidade:</li>
-            <li></li>
-        </div>
-        <div class="d-flex">
-            <li class="fw-bold">Produto:</li>
-            <li>${produto}</li>
-        </div>
-        <div class="d-flex">
-            <li class="fw-bold">Sabor:</li>
-            <li></li>
-        </div>
-        <div class="d-flex">
-            <li class="fw-bold">Observação:</li>
-            <li></li>
-        </div>
-        <div class="d-flex">
-            <li class="fw-bold">Valor:</li>
-            <li>R$ ${precoTexto}</li>
-        </div>
-
-        `)
-    });
-
-    //Enviar pedido via whatsapp    
 
     $('#btn_finalizar').click(function (event) {
         event.preventDefault();
-
-        const nome = $('#nome').val();
-        const celular = $('#celular').val();
-        const telefone = $('#telefone').val();
-        const cep = $('#cep').val();
-        const endereco = $('#endereco').val();
-        const complemento = $('#complemento').val();
-        const bairro = $('#bairro').val();
-        const cidade = $('#cidade').val();
-        const estado = $('#estado').val();
-        const formaPagamento = $('#formaPagamento').val();
-
-        const mensagem = `Dados do cliente:
-            
-            \n\nNome: ${nome}
-            \nTelefone: ${telefone}
-            \nCelular: ${celular} 
-            \nCEP: ${cep}
-            \nEndereço: ${endereco}
-            \nComplemento: ${complemento}
-            \nBairro: ${bairro}
-            \nCidade: ${cidade}
-            \nEstado: ${estado}
-
-            \n\nPedido:
-            \n\nQuantidade:
-            \nProduto:
-            \nSabor:
-            \nObservação:
-            \nValor:
-
-            \n\nTaxa de entrega: 
-            \nValor total:
-            \nForma de pagamento: ${formaPagamento}
-            `;
-        const mensagemUrl = encodeURIComponent(mensagem);
-        const linkWhatsapp = `https://wa.me/556499275875?text=${mensagemUrl}`
-        window.open(linkWhatsapp, '_blank');
-
+        const botao = $(this);
+        const enviaPedido = new EnviaPedido(botao); // Cria a instância de EnviaPedido
+        enviaPedido.enviarMensagem(); // Envia a mensagem via WhatsApp
     });
+
+
+    // $('#btn-informacoes_pedido').click(function () {
+    //     $('#lista_seu_pedido')
+    //         .html(`
+    //     <li class="d-flex justify-content-center">
+    //         <img class="img-thumbnail rounded my-4" width="150"
+    //         src="${imgProduto}" alt="${altProduto}">
+    //     </li>
+    //     <div class="d-flex">
+    //         <li class="fw-bold">Produto:</li>
+    //         <li>${produto}</li>
+    //     </div>
+    //     <div class="d-flex">
+    //         <li class="fw-bold">Sabor:</li>
+    //         <li></li>
+    //     </div>
+    //     <div class="d-flex">
+    //         <li class="fw-bold">Observação:</li>
+    //         <li></li>
+    //     </div>
+    //     <div class="d-flex">
+    //         <li class="fw-bold">Valor:</li>
+    //         <li>R$ ${precoTexto}</li>
+    //     </div>
+
+    //     `)
+    // });
+
+    //Enviar pedido via whatsapp    
+
+
 
 })
