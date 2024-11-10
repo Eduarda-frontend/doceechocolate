@@ -1,0 +1,39 @@
+.card {
+    border: none;
+
+    &-img {
+        height: 100px;
+        width: 100px;
+        object-fit: cover;
+    }
+
+    &-text {
+        color: @cor-secundaria;
+        margin: 8px 0;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+    }
+
+    &-value {
+        font-size: 1.25em;
+    }
+
+}
+
+@media @lg992 {
+
+    .card {
+
+        padding: 8px 0;
+
+        &-title {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            -webkit-line-clamp: 1;
+        }
+
+    }
+}
