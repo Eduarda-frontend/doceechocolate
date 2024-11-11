@@ -4,28 +4,28 @@ function BuscarEndereco(botao, campos) {
     this.endpoint = `https://viacep.com.br/ws/`;
 
     this.buscar = function () {
+        const self = this;
+        const cep = $(self.campos.cep).val();
+        const url = `${self.endpoint}${cep}/json/`;
 
-        const cep = $(this.campos.cep).val();
-        const url = `${this.endpoint}${cep}/json/`;
-
-        $(this).find('i').addClass('d-none');
-        $(this).find('span').removeClass('d-none');
+        $(self).find('i').addClass('d-none');
+        $(self).find('span').removeClass('d-none');
 
         fetch(url)
             .then((resposta) => resposta.json())
             .then((json) => {
-                $(this.campos.endereco).val(json.logradouro);
-                $(this.campos.bairro).val(json.bairro);
-                $(this.campos.cidade).val(json.localidade);
-                $(this.campos.estado).val(json.uf);
+                $(self.campos.endereco).val(json.logradouro);
+                $(self.campos.bairro).val(json.bairro);
+                $(self.campos.cidade).val(json.localidade);
+                $(self.campos.estado).val(json.uf);
             })
             .catch(function (erro) {
                 alert('Este CEP não exite, por favor tente novamente!');
             })
             .finally(() => {
                 setTimeout(() => {
-                    $(botao).find('i').removeClass('d-none');
-                    $(botao).find('span').addClass('d-none');
+                    $(self.botao).find('i').removeClass('d-none');
+                    $(self.botao).find('span').addClass('d-none');
                 }, 1000);
             });
     };
@@ -33,56 +33,45 @@ function BuscarEndereco(botao, campos) {
 
 function Pedido(botao) {
 
-    this.produto = $(botao).find('h3').text();
-    this.imgProduto = $(botao).find('img').attr('src');
-    this.altProduto = $(botao).find('img').attr('alt');
-    this.precoTexto = $(botao).find('span').text();
-    this.listaPedidos = [];
+    this.dados = {};
 
-    this.coletaInformacoes = function () {
-
-        this.criaPedidoHtml = function () {
-            return `
-            <li>
-            <ul class="p-0 mb-3">
-            <li class="d-flex justify-content-center">
-            <img class="img-thumbnail rounded my-4" width="150"
-            src="${this.imgProduto}" alt="${this.altProduto}">
-            </li>
-            <div class="d-flex">
-                <li class="fw-bold">Produto:</li>
-                <li>${this.produto}</li>
-            </div>
-            <div class="d-flex">
-                <li class="fw-bold">Sabor:</li>
-                <li></li>
-            </div>
-            <div class="d-flex">
-                <li class="fw-bold">Observação:</li>
-                <li></li>
-            </div>
-            <div class="d-flex">
-                <li class="fw-bold">Valor:</li>
-                <li>R$ ${this.precoTexto}</li>
-            </div>
-            </ul>
-            <button id="btn-remove_pedido"  class="text-danger">
-            <i class="bi bi-trash3-fill"></i>
-            Remover</button>
-            </li>`;
-        }
-
-    }
+    this.dados.produto = $(botao).find('h3').text();
+    this.dados.imgProduto = $(botao).find('img').attr('src');
+    this.dados.altProduto = $(botao).find('img').attr('alt');
+    this.dados.precoTexto = $(botao).find('span').text();
+    this.criaPedidoHtml = function () {
+        return `
+        <li>
+        <ul class="p-0 mb-3">
+        <li class="d-flex justify-content-center">
+        <img class="img-thumbnail rounded my-4" width="150"
+        src="${this.dados.imgProduto}" alt="${this.dados.altProduto}">
+        </li>
+        <div class="d-flex">
+            <li class="fw-bold">Produto:</li>
+            <li>${this.dados.produto}</li>
+        </div>
+        <div class="d-flex">
+            <li class="fw-bold">Sabor:</li>
+            <li></li>
+        </div>
+        <div class="d-flex">
+            <li class="fw-bold">Observação:</li>
+            <li></li>
+        </div>
+        <div class="d-flex">
+            <li class="fw-bold">Valor:</li>
+            <li>R$ ${this.dados.precoTexto}</li>
+        </div>
+        </ul>
+        <button id="btn-remove_pedido"  class="text-danger">
+        <i class="bi bi-trash3-fill"></i>
+        Remover</button>
+        </li>`;
+    };
 
     this.adicionaPedido = function () {
         let pedidoHtml = this.criaPedidoHtml();
-
-        this.listaPedidos.push({
-            produto: this.produto,
-            imgProduto: this.imgProduto,
-            altProduto: this.altProduto,
-            precoTexto: this.precoTexto
-        });
 
         $('#lista_pedido').append(pedidoHtml);
         $('#lista_seu_pedido').append(pedidoHtml);
@@ -91,9 +80,9 @@ function Pedido(botao) {
 
 };
 
-function EnviaPedido(botao) {
+function EnviaPedido() {
 
-    const pedido = new Pedido(botao);
+    const pedido = new Pedido();
 
     pedido.coletaInformacoes()
     console.log(pedido);
@@ -211,12 +200,13 @@ $(document).ready(function () {
 
     //Adiciona o item ao carrinho
 
-    $('.section__bento-cake button').click(function () {
+    $('.section__bento-cake button').on('click', function (evento) {
 
         const pedido = new Pedido(this);
 
-        pedido.coletaInformacoes();
+        pedido.criaPedidoHtml();
         pedido.adicionaPedido();
+
 
         $('#bag').addClass('d-none');
         $('#lista_pedido').removeClass('d-none');
@@ -229,37 +219,5 @@ $(document).ready(function () {
         const enviaPedido = new EnviaPedido(botao); // Cria a instância de EnviaPedido
         enviaPedido.enviarMensagem(); // Envia a mensagem via WhatsApp
     });
-
-
-    // $('#btn-informacoes_pedido').click(function () {
-    //     $('#lista_seu_pedido')
-    //         .html(`
-    //     <li class="d-flex justify-content-center">
-    //         <img class="img-thumbnail rounded my-4" width="150"
-    //         src="${imgProduto}" alt="${altProduto}">
-    //     </li>
-    //     <div class="d-flex">
-    //         <li class="fw-bold">Produto:</li>
-    //         <li>${produto}</li>
-    //     </div>
-    //     <div class="d-flex">
-    //         <li class="fw-bold">Sabor:</li>
-    //         <li></li>
-    //     </div>
-    //     <div class="d-flex">
-    //         <li class="fw-bold">Observação:</li>
-    //         <li></li>
-    //     </div>
-    //     <div class="d-flex">
-    //         <li class="fw-bold">Valor:</li>
-    //         <li>R$ ${precoTexto}</li>
-    //     </div>
-
-    //     `)
-    // });
-
-    //Enviar pedido via whatsapp    
-
-
 
 })
