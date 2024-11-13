@@ -39,9 +39,10 @@ function Pedido(botao) {
     this.dados.imgProduto = $(botao).find('img').attr('src');
     this.dados.altProduto = $(botao).find('img').attr('alt');
     this.dados.precoTexto = $(botao).find('span').text();
+
     this.criaPedidoHtml = function () {
         return `
-        <li>
+        <li class="col-6 col-lg-12">
         <ul class="p-0 mb-3">
         <li class="d-flex justify-content-center">
         <img class="img-thumbnail rounded my-4" width="150"
@@ -80,15 +81,9 @@ function Pedido(botao) {
 
 };
 
-function EnviaPedido() {
+function EnviaPedido(botao) {
 
-    const pedido = new Pedido();
-
-    pedido.coletaInformacoes()
-    console.log(pedido);
-
-    this.produto = pedido.produto;
-    this.precoTexto = pedido.precoTexto;
+    Pedido.call(this, botao);
 
     this.nome = $('#nome').val();
     this.celular = $('#celular').val();
@@ -117,24 +112,25 @@ function EnviaPedido() {
 
             \n\nPedido:
 
-            \n\nProduto:${this.produto}
+            \n\nProduto:${this.dados.produto}
             \nSabor:
             \nObservação:
-            \nValor:${this.precoTexto}
+            \nValor:${this.dados.precoTexto}
 
             \n\nTaxa de entrega: 
-            \nValor total:${this.precoTexto}
+            \nValor total:${this.dados.precoTexto}
             \nForma de pagamento: ${this.formaPagamento}
             `
 
     };
-    this.mensagemUrl = encodeURIComponent(this.mensagem());
-    this.linkWhatsapp = `https://wa.me/556499275875?text=${this.mensagemUrl}`
+
+    this.mensagemUrl = encodeURIComponent(this.mensagem())
+    this.linkWhatsapp = `https://wa.me/5564992754875?text=${this.mensagemUrl}`
 
     this.enviarMensagem = function () {
 
         window.open(this.linkWhatsapp, '_blank');
-    }
+    };
 
 };
 
@@ -200,7 +196,7 @@ $(document).ready(function () {
 
     //Adiciona o item ao carrinho
 
-    $('.section__bento-cake button').on('click', function (evento) {
+    $('.card-button').on('click', function (evento) {
 
         const pedido = new Pedido(this);
 
