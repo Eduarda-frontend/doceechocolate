@@ -1,15 +1,17 @@
+@use 'variaveis';
+
 .main {
     margin-top: 5%;
 }
 
-.pedidos{
-    font-family: @texto-cursivo;
+.pedidos {
+    font-family: variaveis.$texto-cursivo;
     font-size: 5em;
-    color: @branco;
+    color: variaveis.$branco;
 }
 
-.pedidos span{
-    color: @amarelo;
+.pedidos span {
+    color: variaveis.$amarelo;
 }
 
 .taxas-entregas {
@@ -18,7 +20,7 @@
 
 .title,
 span {
-    color: @cor-primaria;
+    color: variaveis.$cor-primaria;
     font-weight: bold;
 }
 
@@ -26,25 +28,22 @@ span {
     display: none;
 }
 
-@media @md768 {
+@media #{variaveis.$md768} {
     .main {
         margin-top: 14%;
     }
 }
 
-@media @lg992 {
-
+@media #{variaveis.$lg992} {
     .taxas-entregas {
-
         position: sticky;
         top: 10px;
 
-        #bag{
+        #bag {
             text-align: center;
         }
 
         &__bag {
-
             &-body {
                 background-color: #f1efef;
                 display: flex;
@@ -62,6 +61,5 @@ span {
                 font-weight: normal;
             }
         }
-
     }
 }
