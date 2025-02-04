@@ -1,18 +1,23 @@
 module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        less: {
+        sass: {
             development: {
+                options: {
+                    style: 'expanded',
+                    implementation: require('sass')
+                },
                 files: {
-                    'dev/styles/style.css': 'src/styles/**/style.less'
+                    'dev/styles/style.css': 'src/styles/main.scss'
                 }
             },
             production: {
                 options: {
-                    compress: true
+                    implementation: require('sass'),
+                    sourceMap: true
                 },
                 files: {
-                    'dist/styles/style.min.css': 'src/styles/**/style.less'
+                    'dist/styles/style.min.css': 'src/styles/main.scss'
                 }
             }
         },
@@ -35,9 +40,9 @@ module.exports = function (grunt) {
             }
         },
         watch: {
-            less: {
-                files: ['src/styles/**/*.less'],
-                tasks: ['less:development']
+            sass: {
+                files: ['src/styles/*.scss'],
+                tasks: ['sass:development']
             },
             html: {
                 files: ['src/*.html'],
@@ -136,7 +141,7 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-replace');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
@@ -145,6 +150,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-imagemin');
 
     grunt.registerTask('default', ['watch', 'copy:dev']);
-    grunt.registerTask('build', ['less:production', 'htmlmin:dist', 'replace:dist', 'imagemin:dist', 'uglify']);
+    grunt.registerTask('build', ['sass:production', 'htmlmin:dist', 'replace:dist', 'imagemin:dist', 'uglify']);
 
 };

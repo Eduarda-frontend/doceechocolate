@@ -1,0 +1,120 @@
+@use 'variaveis';
+
+.background__image {
+    background-image: url("../img/imagens/background.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 300px;
+    max-width: 100%;
+    position: relative;
+    opacity: 1;
+}
+
+.background__pink {
+    background-color: variaveis.$rosa;
+    padding: 0.25rem;
+
+    .lista_item a {
+        color: variaveis.$branco;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .lista_item a:hover {
+        text-decoration: underline;
+        color: variaveis.$dourado;
+    }
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+
+    &__img {
+        width: 23%;
+        margin-top: 16%;
+        display: flex;
+        border-radius: 50%;
+        border: 8px solid variaveis.$branco;
+    }
+}
+
+.perfil {
+    border-radius: 16px;
+    text-align: center;
+    position: absolute;
+    margin-top: 30%;
+    width: 100%;
+
+    .title {
+        font-family: variaveis.$texto-principal;
+        color: variaveis.$cor-primaria;
+    }
+
+    ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 30px;
+        margin-left: 5%;
+    }
+
+    a {
+        text-decoration: none;
+        color: variaveis.$cor-secundaria;
+    }
+
+    .dropdown:hover > .dropdown-menu, .dropend:hover > .dropdown-menu {
+        display: block;
+        margin-top: 25em;
+    }
+
+    .dropend:hover > .dropdown-menu {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        margin-left: .125em;
+    }
+}
+
+@media #{variaveis.$md768} {
+    .logo__img {
+        margin-top: 20%;
+        width: 14%;
+    }
+}
+
+@media #{variaveis.$lg992} {
+    .background__image {
+        background-size: cover;
+    }
+
+    .perfil {
+        padding: 8px;
+        margin-top: 23%;
+    }
+
+    .logo__img {
+        margin-top: 15%;
+    }
+}
+
+@media #{variaveis.$xl1200} {
+    .logo {
+        justify-content: start;
+        margin-left: 1%;
+
+        &__img {
+            width: 15%;
+            border-radius: 28%;
+            margin-top: 22%;
+        }
+    }
+
+    .perfil {
+        margin-top: 22%;
+    }
+}

@@ -1,0 +1,10 @@
+@use 'variaveis';
+
+footer {
+    color: variaveis.$branco;
+    font-weight: bold;
+}
+
+.linha_vertical {
+    border: 1px solid variaveis.$branco;
+}

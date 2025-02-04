@@ -16,12 +16,12 @@
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-htmlmin": "^3.1.0",
     "grunt-contrib-imagemin": "^4.0.0",
-    "grunt-contrib-less": "^3.0.0",
+    "grunt-contrib-sass": "^2.0.0",
     "grunt-contrib-uglify": "^5.2.2",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-replace": "^2.0.2",
-    "less": "^4.2.0",
-    "less-watch-compiler": "^1.16.3"
+    "grunt-sass": "^3.1.0",
+    "sass": "^1.83.4"
   },
   "dependencies": {
     "bootstrap-icons": "^1.11.3"
