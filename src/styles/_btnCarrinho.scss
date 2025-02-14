@@ -1,0 +1,31 @@
+@use 'variaveis';
+
+.btn-carrinho{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: variaveis.$rosa-escuro;
+    position: fixed;
+    bottom: 2%;
+    right: 2%;
+    cursor: pointer;
+    color: #fff;
+    
+    &__icon{
+        margin-left: 26%;
+
+    }
+
+    a{
+        position: absolute;
+
+        span{
+
+            color: #fff;
+        }
+    }
+}
+
+.bi-bag-heart::before {
+    margin-top: 22%;
+}
