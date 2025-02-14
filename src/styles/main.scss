@@ -1,5 +1,6 @@
 @use 'variaveis';
 @use 'header';
+@use 'btnCarrinho';
 @use 'cardapio';
 @use 'card';
 @use 'footer';
@@ -23,7 +24,6 @@ button{
     text-align: justify;
     border: none;
 }
-
 
 body {
     min-width: 576px;

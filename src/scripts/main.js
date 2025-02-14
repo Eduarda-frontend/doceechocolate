@@ -1,13 +1,14 @@
+
 function BuscarEndereco(botao, campos) {
     this.botao = botao;
     this.campos = campos;
     this.endpoint = `https://viacep.com.br/ws/`;
-
+    
     this.buscar = function () {
         const self = this;
         const cep = $(self.campos.cep).val();
         const url = `${self.endpoint}${cep}/json/`;
-
+        
         $(self).find('i').addClass('d-none');
         $(self).find('span').removeClass('d-none');
 
@@ -31,59 +32,87 @@ function BuscarEndereco(botao, campos) {
     };
 };
 
-function Pedido(botao) {
+let carrinho = [];
 
-    this.dados = {};
 
-    this.dados.produto = $(botao).find('h3').text();
-    this.dados.imgProduto = $(botao).find('img').attr('src');
-    this.dados.altProduto = $(botao).find('img').attr('alt');
-    this.dados.precoTexto = $(botao).find('span').text();
+$('#menu').click(function (event) {
+    let parentButton = event.target.closest('.card-button');
+    let $button = $(parentButton);
+    let nomeProduto = $button.attr('data-name');
+    let valor = parseFloat($button.attr('data-price'));
 
-    this.criaPedidoHtml = function () {
-        return `
-        <li class="col-6 col-lg-12">
-        <ul class="p-0 mb-3">
-        <li class="d-flex justify-content-center">
-        <img class="img-thumbnail rounded my-4" width="150"
-        src="${this.dados.imgProduto}" alt="${this.dados.altProduto}">
-        </li>
-        <div class="d-flex">
-            <li class="fw-bold">Produto:</li>
-            <li>${this.dados.produto}</li>
-        </div>
-        <div class="d-flex">
-            <li class="fw-bold">Sabor:</li>
-            <li></li>
-        </div>
-        <div class="d-flex">
-            <li class="fw-bold">Observação:</li>
-            <li></li>
-        </div>
-        <div class="d-flex">
-            <li class="fw-bold">Valor:</li>
-            <li>R$ ${this.dados.precoTexto}</li>
-        </div>
-        </ul>
-        <button id="btn-remove_pedido"  class="text-danger">
-        <i class="bi bi-trash3-fill"></i>
-        Remover</button>
-        </li>`;
-    };
+    if (parentButton) {
 
-    this.adicionaPedido = function () {
-        let pedidoHtml = this.criaPedidoHtml();
+        adicionaPedido(nomeProduto, valor);
+        
+    }
+})
 
-        $('#lista_pedido').append(pedidoHtml);
-        $('#lista_seu_pedido').append(pedidoHtml);
+// FUNÇÃO PARA ADICIONAR NO CARRINHO
 
-    };
+function adicionaPedido(nomeProduto, valor) {
 
-};
+    const itemDuplicado = carrinho.find(item => item.nomeProduto === nomeProduto);
+
+    if(itemDuplicado){
+        itemDuplicado.quantidade += 1;
+        return
+    }else{
+        carrinho.push({
+            nomeProduto,
+            valor,
+            quantidade:1
+        })
+        
+    }
+
+    atualizaCarrinho()
+}
+
+
+// ATUALIZA CARRINHO
+
+function atualizaCarrinho(){
+    let listaPedidosConteiner = $('#lista-pedido');
+    listaPedidosConteiner.html("");
+    let total = 0;
+
+    
+    carrinho.forEach(item =>{
+
+        const criaPedidoHtml = document.createElement("li");
+        $(criaPedidoHtml).addClass("col-6 col-lg-12");
+        criaPedidoHtml.innerHTML = 
+            `
+            <div class=" p-0 mb-3"> 
+            
+            <div> 
+                <p class="fw-bold">${item.nomeProduto}</p>
+                <p>Quantidade: ${item.quantidade}</p>
+                <p class="mt-2"> ${item.valor.toFixed(2)} </p>
+            </div>
+
+                <button> Remover</button> 
+
+            </div>
+        `
+        total += item.valor * item.quantidade;
+        listaPedidosConteiner.append(criaPedidoHtml);
+    });
+
+    $('#valor-total').text(total.toLocaleString("pt-BR",{
+        style:"currency",
+        currency:"BRL"
+    }));
+
+    let contadorCarrinho = $('#contador-carrinho');
+    contadorCarrinho.text(carrinho.length);
+}
+
 
 function EnviaPedido(botao) {
 
-    Pedido.call(this, botao);
+    // Pedido.call(this, botao);
 
     this.nome = $('#nome').val();
     this.celular = $('#celular').val();
@@ -198,10 +227,10 @@ $(document).ready(function () {
 
     $('.card-button').on('click', function (evento) {
 
-        const pedido = new Pedido(this);
+        // const pedido = new Pedido(this);
 
-        pedido.criaPedidoHtml();
-        pedido.adicionaPedido();
+        // pedido.criaPedidoHtml();
+        // pedido.adicionaPedido();
 
 
         $('#bag').addClass('d-none');
