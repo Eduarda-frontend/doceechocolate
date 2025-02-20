@@ -39,6 +39,17 @@ function BuscarEndereco(botao, campos) {
     };
 };
 
+// LIMPA INPUTS COM OS DADOS DO ENDEREÇO
+
+$('#limparCep').on('click',function(){
+    $('#cep').val('');
+    $('#endereco').val('');
+    $('#complemento').val('');
+    $('#bairro').val('');
+    $('#cidade').val('');
+    $('#estado').val('');
+})
+
 let carrinho = [];
 
 
@@ -141,7 +152,6 @@ function removeItemCarrinho(nome){
         atualizaCarrinho();
     }
 }
-
 
 function EnviaPedido() {
 
