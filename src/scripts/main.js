@@ -38,8 +38,8 @@ let carrinho = [];
 $('#menu').click(function (event) {
     let parentButton = event.target.closest('.card-button');
     let $button = $(parentButton);
-    let nomeProduto = $button.attr('data-name');
-    let valor = parseFloat($button.attr('data-price'));
+    let nomeProduto = $button.attr('data-nome');
+    let valor = parseFloat($button.attr('data-valor'));
 
     if (parentButton) {
 
@@ -56,7 +56,7 @@ function adicionaPedido(nomeProduto, valor) {
 
     if(itemDuplicado){
         itemDuplicado.quantidade += 1;
-        return
+        
     }else{
         carrinho.push({
             nomeProduto,
@@ -68,7 +68,6 @@ function adicionaPedido(nomeProduto, valor) {
 
     atualizaCarrinho()
 }
-
 
 // ATUALIZA CARRINHO
 
@@ -92,9 +91,8 @@ function atualizaCarrinho(){
                 <p class="mt-2"> ${item.valor.toFixed(2)} </p>
             </div>
 
-                <button> Remover</button> 
+            <button class="remove__item" data-nome="${item.nomeProduto}"> Remover </button> 
 
-            </div>
         `
         total += item.valor * item.quantidade;
         listaPedidosConteiner.append(criaPedidoHtml);
@@ -107,6 +105,34 @@ function atualizaCarrinho(){
 
     let contadorCarrinho = $('#contador-carrinho');
     contadorCarrinho.text(carrinho.length);
+}
+
+// REMOVE ITEM
+
+$('#lista-pedido').click(function(event){
+    if(event.target.classList.contains('remove__item')){
+        const nomeProduto = event.target.getAttribute('data-nome')
+
+
+        removeItemCarrinho()
+    }
+})
+
+function removeItemCarrinho(nome){
+    const index = carrinho.findIndex(item => item.nome === nome)
+
+    if(index !== -1){
+        const item = carrinho[index];
+        
+        if(item.quantidade > 1){
+            item.quantidade -= 1;
+            atualizaCarrinho()
+            return
+        }
+
+        carrinho.splice(index, 1);
+        atualizaCarrinho();
+    }
 }
 
 
