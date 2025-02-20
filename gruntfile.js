@@ -51,6 +51,13 @@ module.exports = function (grunt) {
             images: {
                 files: ['src/img/**/*.{png,jpg,gif}'],
                 tasks: ['imagemin']
+            },
+            scripts: {
+                files: ['src/scripts/*.js'],  // Arquivos monitorados
+                tasks: ['copy:dev'],            // Tarefa a ser executada quando houver alterações
+                options: {
+                    spawn: false,  // Não reiniciar o processo Grunt toda vez
+                },
             }
         },
         replace: {

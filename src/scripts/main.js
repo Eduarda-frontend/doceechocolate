@@ -8,27 +8,34 @@ function BuscarEndereco(botao, campos) {
         const self = this;
         const cep = $(self.campos.cep).val();
         const url = `${self.endpoint}${cep}/json/`;
-        
-        $(self).find('i').addClass('d-none');
-        $(self).find('span').removeClass('d-none');
 
         fetch(url)
-            .then((resposta) => resposta.json())
+            .then((resposta) => {
+                
+                if(!resposta.ok){
+                    throw new Error('Erro na requisição');
+                }
+
+                return resposta.json();
+            })
             .then((json) => {
+                
+                if(json.erro){
+                    throw new Error('CEP não encontrado');
+                }
+            
                 $(self.campos.endereco).val(json.logradouro);
                 $(self.campos.bairro).val(json.bairro);
                 $(self.campos.cidade).val(json.localidade);
                 $(self.campos.estado).val(json.uf);
+
             })
             .catch(function (erro) {
+                console.error('Erro na requisição:', erro);
                 alert('Este CEP não exite, por favor tente novamente!');
+
             })
-            .finally(() => {
-                setTimeout(() => {
-                    $(self.botao).find('i').removeClass('d-none');
-                    $(self.botao).find('span').addClass('d-none');
-                }, 1000);
-            });
+
     };
 };
 
@@ -136,9 +143,8 @@ function removeItemCarrinho(nome){
 }
 
 
-function EnviaPedido(botao) {
+function EnviaPedido() {
 
-    // Pedido.call(this, botao);
 
     this.nome = $('#nome').val();
     this.celular = $('#celular').val();
@@ -247,21 +253,6 @@ $(document).ready(function () {
 
     $(botaoBuscarCep).click(function () {
         buscarCep.buscar();
-    });
-
-    //Adiciona o item ao carrinho
-
-    $('.card-button').on('click', function (evento) {
-
-        // const pedido = new Pedido(this);
-
-        // pedido.criaPedidoHtml();
-        // pedido.adicionaPedido();
-
-
-        $('#bag').addClass('d-none');
-        $('#lista_pedido').removeClass('d-none');
-
     });
 
     $('#btn_finalizar').click(function (event) {
