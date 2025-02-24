@@ -153,58 +153,6 @@ function removeItemCarrinho(nome){
     }
 }
 
-function EnviaPedido() {
-
-
-    this.nome = $('#nome').val();
-    this.celular = $('#celular').val();
-    this.telefone = $('#telefone').val();
-    this.cep = $('#cep').val();
-    this.endereco = $('#endereco').val();
-    this.complemento = $('#complemento').val();
-    this.bairro = $('#bairro').val();
-    this.cidade = $('#cidade').val();
-    this.estado = $('#estado').val();
-    this.formaPagamento = $('#formaPagamento').val();
-
-    this.mensagem = function () {
-        return `
-        Dados do cliente:
-            
-            \n\nNome: ${this.nome}
-            \nTelefone: ${this.telefone}
-            \nCelular: ${this.celular} 
-            \nCEP: ${this.cep}
-            \nEndereço: ${this.endereco}
-            \nComplemento: ${this.complemento}
-            \nBairro: ${this.bairro}
-            \nCidade: ${this.cidade}
-            \nEstado: ${this.estado}
-
-            \n\nPedido:
-
-            \n\nProduto:${this.dados.produto}
-            \nSabor:
-            \nObservação:
-            \nValor:${this.dados.precoTexto}
-
-            \n\nTaxa de entrega: 
-            \nValor total:${this.dados.precoTexto}
-            \nForma de pagamento: ${this.formaPagamento}
-            `
-
-    };
-
-    this.mensagemUrl = encodeURIComponent(this.mensagem())
-    this.linkWhatsapp = `https://wa.me/5564992754875?text=${this.mensagemUrl}`
-
-    this.enviarMensagem = function () {
-
-        window.open(this.linkWhatsapp, '_blank');
-    };
-
-};
-
 $(document).ready(function () {
     $('#cep').mask('00000-000', {
         placeholder: '00000-000',
@@ -237,15 +185,7 @@ $(document).ready(function () {
         },
         messages: {
             nome: 'Por favor, insira seu nome!',
-        },
-        submitHandler: function (form) {
-            console.log(form);
-        },
-        invalidHandler: function (evento, validador) {
-            let camposIncorretos = validador.numberOfInvalids();
-            if (camposIncorretos) {
-                alert(`Faltam ${camposIncorretos} campos por preen cher!`);
-            }
+            cep: 'Por favor, insira o cep'
         }
     });
 
@@ -265,11 +205,63 @@ $(document).ready(function () {
         buscarCep.buscar();
     });
 
-    $('#btn_finalizar').click(function (event) {
-        event.preventDefault();
-        const botao = $(this);
-        const enviaPedido = new EnviaPedido(botao); // Cria a instância de EnviaPedido
-        enviaPedido.enviarMensagem(); // Envia a mensagem via WhatsApp
+    
+})
+
+
+$('#btn_finalizar').on('click',function (event) {
+    event.preventDefault();    
+    let total = 0;
+
+    carrinho.forEach(item =>{
+        total += item.valor * item.quantidade;
     });
 
-})
+    const itensCarrinho = carrinho.map((item) =>{         
+        return(
+        `     
+        
+        *${item.nomeProduto}*
+        *Sabor:*
+        *Observação:*
+        *Valor:* ${item.valor}
+        *Quantidade:* ${item.quantidade}
+            `
+        )
+        
+    }).join('');
+
+    let nomeCliente = $('#nomeCliente').val();
+    let celular = $('#celular').val();
+    let telefone = $('#telefone').val();
+    let cep = $('#cep').val();
+    let endereco = $('#endereco').val();
+    let complemento = $('#complemento').val();
+    let bairro = $('#bairro').val();
+    let cidade = $('#cidade').val();
+    let estado = $('#estado').val();
+    let formaPagamento = $('#formaPagamento').val();
+
+    const mensagem = `          
+    *Nome:* ${nomeCliente}
+    *Telefone:* ${telefone}
+    *Celular:* ${celular} 
+    *CEP:* ${cep}
+    *Endereço:* ${endereco}
+    *Complemento:* ${complemento}
+    *Bairro:* ${bairro}
+    *Cidade:* ${cidade}
+    *Estado:* ${estado} 
+    ${itensCarrinho}
+    
+    *Forma de pagamento:* ${formaPagamento}
+    *Valor total:* R$${total.toFixed(2)} `
+    
+    ;
+
+    const linkWhatsapp = `https://wa.me/5564992754875?text=${encodeURIComponent(mensagem)}`
+    window.open(linkWhatsapp, '_blank');
+    
+    carrinho.length = [];
+    atualizaCarrinho();
+});
