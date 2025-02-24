@@ -208,11 +208,13 @@ $(document).ready(function () {
     
 })
 
+// FINALIZA PEDIDO E ENVIA VIA WHATSAPP
 
 $('#btn_finalizar').on('click',function (event) {
     event.preventDefault();    
     let total = 0;
 
+    // PEGA VALOR E QUANTIDADE DE ITENS PARA PASSAR O TOTAL
     carrinho.forEach(item =>{
         total += item.valor * item.quantidade;
     });
@@ -262,6 +264,7 @@ $('#btn_finalizar').on('click',function (event) {
     const linkWhatsapp = `https://wa.me/5564992754875?text=${encodeURIComponent(mensagem)}`
     window.open(linkWhatsapp, '_blank');
     
+    //  LIMPA O CARRINHO 
     carrinho.length = [];
     atualizaCarrinho();
 });
