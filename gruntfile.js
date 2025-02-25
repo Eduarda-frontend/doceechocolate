@@ -157,6 +157,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-imagemin');
 
     grunt.registerTask('default', ['watch', 'copy:dev']);
-    grunt.registerTask('build', ['watch','sass:production', 'htmlmin:dist', 'replace:dist', 'imagemin:dist', 'uglify']);
+    grunt.registerTask('build', ['sass:production', 'htmlmin:dist', 'replace:dist', 'imagemin:dist', 'uglify']);
 
 };
