@@ -94,6 +94,9 @@ function atualizaCarrinho(){
     listaPedidosConteiner.html("");
     let total = 0;
 
+    $('#sacola-vazia').addClass("d-none");
+    $('.finaliza-compra__resumo').removeClass('text-center')
+
     
     carrinho.forEach(item =>{
 
@@ -145,11 +148,20 @@ function removeItemCarrinho(nome){
         if(item.quantidade > 1){
             item.quantidade -= 1;
             atualizaCarrinho()
-            return
+        }else if(item.quantidade === 1){
+            carrinho.splice(index, 1);
+            atualizaCarrinho();
+
+            if(carrinho.length === 0){
+
+                atualizaCarrinho();
+                $('#sacola-vazia').removeClass("d-none");
+                $('.finaliza-compra__resumo').addClass('text-center');
+            }
         }
 
-        carrinho.splice(index, 1);
-        atualizaCarrinho();
+
+
     }
 }
 
@@ -267,4 +279,5 @@ $('#btn_finalizar').on('click',function (event) {
     //  LIMPA O CARRINHO 
     carrinho.length = [];
     atualizaCarrinho();
+
 });

@@ -302,7 +302,7 @@
                                 <input type="tel" class="form-control" id="celular">
                             </div>
                             <div class="col-sm-4 col-md-4 mb-3 d-flex align-items-end">
-                                <div class="position-relative input-icon">
+                                <div class="position-relative finalizar-compra__cep">
                                     <label for="cep" class="form-label">CEP:</label>
                                     <input type="text" class="form-control" id="cep">
                                     <i id="limparCep" class="bi bi-x-lg"></i>
@@ -355,15 +355,17 @@
                         </div>
                     </div>
                 </form>
-                <div class="finaliza-compra__resumo col-sm-12 col-lg-4 white-square ">
+                <div class="finaliza-compra__resumo text-center col-sm-12 col-lg-4 white-square ">
                     <div class="pt-3 ps-4 d-flex justify-content-between">
                         <h2>Resumo do pedido</h2>
                         <i id="pedidos" class="fs-2 bi bi-bag-heart"></i>
                     </div>
                     <div class="container p-sm-2"></div>
                     <ul id="lista-pedido" class="row"></ul>
-                    <i class="bi bi-bag-x-fill "></i>
-                    <p class="fs-2">Sua sacola está vazia!</p>
+                    <div id="sacola-vazia">                        
+                        <i class="bi bi-bag-x-fill "></i>
+                        <p  class="fs-2">Sua sacola está vazia!</p>
+                    </div>
                     <p class="fw-bold text-end"><span id="valor-total">0.00</span></p>
                 </div>
     </section>
@@ -425,9 +427,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-    <script src="./src/scripts/jquery.js"></script>
-    <script src="./src/scripts/jquery.mask.min.js"></script>
-    <script src="./src/scripts/jquery.validate.min.js"></script>
+    <script src="./scripts/jquery.js"></script>
+    <script src="./scripts/jquery.mask.min.js"></script>
+    <script src="./scripts/jquery.validate.min.js"></script>
     <script src="@@ENDERECO_JS"></script>
 
 </body>

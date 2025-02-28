@@ -1,18 +1,18 @@
-.input-icon i{
-    position: absolute;
-    top: 58%;
-    left: 88%;
-    cursor: pointer;
-}
-
 .finaliza-compra{
-    
+
+    &__cep i{
+        position: absolute;
+        top: 58%;
+        left: 88%;
+        cursor: pointer;
+    }
+
     &__resumo{
-        text-align: center;
 
         .bi-bag-x-fill{
             width: 50%;
             font-size: 10em;
         }
+
     }
 }
