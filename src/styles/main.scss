@@ -4,7 +4,7 @@
 @use 'cardapio';
 @use 'card';
 @use 'footer';
-@use 'formulario';
+@use 'finaliza-compra';
 
 *{
     margin: 0;
@@ -32,9 +32,8 @@ body {
     width: 100%;
     margin: 0 auto;
     background-color: variaveis.$background-color;
-    font-family: variaveis.$texto-secundario;
     color: variaveis.$cor-secundaria;
-    font-size: 14px;
+    font-family: variaveis.$texto-secundario;
 }
 
 .white-square {
@@ -42,3 +41,4 @@ body {
     border-radius: 8px;
     border: 1px solid rgb(208, 212, 216);
 }
+

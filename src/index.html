@@ -278,102 +278,106 @@
         </div>
     </div>
 
+    <section class="finalizar-compra">
 
-    <div class="container p-0">
-        <div class="row">
-            <form class="col-sm-12 col-lg-8 mb-3 p-0">
-                <div class="white-square pt-3 p-3 me-lg-3">
-                    <div class="row">
-                        <div class="d-flex justify-content-between mb-2">
-                            <h2>Seus dados</h2>
-                            <i class=" fs-2 bi bi-pencil-square"></i>
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <label for="nome" class="form-label">Nome:</label>
-                            <input type="text" class="form-control" id="nomeCliente">
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="telefone" class="form-label">Telefone:</label>
-                            <input type="tel" class="form-control" id="telefone">
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="celular" class="form-label">Celular:</label>
-                            <input type="tel" class="form-control" id="celular">
-                        </div>
-                        <div class="col-sm-4 col-md-4 mb-3 d-flex align-items-end">
-                            <div class="position-relative input-icon">
-                                <label for="cep" class="form-label">CEP:</label>
-                                <input type="text" class="form-control" id="cep">
-                                <i id="limparCep" class="bi bi-x-lg"></i>
+        <div class="container p-0">
+            <div class="row">
+                <form class="col-sm-12 col-lg-8 mb-3 p-0">
+                    <div class="white-square pt-3 p-3 me-lg-3">
+                        <div class="row">
+                            <div class="d-flex justify-content-between mb-2">
+                                <h2>Seus dados</h2>
+                                <i class=" fs-2 bi bi-pencil-square"></i>
                             </div>
-                            <button type="button" class="btn btn-primary ms-1" id="btn-buscar-cep">
-                                <i class="bi bi-search" height="20"></i>
-                            </button>
-                        </div>
-                        <div class="col-sm-8">
-                            <label for="endereco" class="form-label">Endereço completo:</label>
-                            <input type="text" class="form-control" id="endereco">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="bairro" class="form-label">Bairro:</label>
-                            <input type="text" class="form-control" id="bairro">
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="cidade" class="form-label">Cidade:</label>
-                            <input type="text" class="form-control" id="cidade">
-                        </div>
-                        <div class="col-md-2 mb-3">
-                            <label for="estado" class="form-label">Estado:</label>
-                            <input type="text" class="form-control" id="estado">
-                        </div>
-                        <div class="col-12 mb-3">
-                            <label for="complemento" class="form-label">Complemento:</label>
-                            <input type="text" class="form-control" id="complemento"
-                                placeholder="Quadra:02, Lote:15, apartamento, casa ">
-                        </div>
-                        <hr>
-                        <div class="col-6">
-                            <label for="formaPagamento" class="form-label">Forma de pagamento:</label>
-                            <select id="formaPagamento" class="form-select">
-                                <option selected>Dinheiro</option>
-                                <option>...</option>
-                            </select>
-                        </div>
-                        <div class="col-6">
-                            <label for="parcelamento" class="form-label">Parcelamento:</label>
-                            <select id="parcelamento" class="form-select">
-                                <option selected>Á vista</option>
-                                <option>1x de R$ 0,00</option>
-                                <option>2x de R$ 0,00 sem juros</option>
-                            </select>
-                        </div>
-                        <div class="d-grid">
-                            <button id="btn_finalizar" type="submit" class="btn btn-success mt-4">Finalizar
-                                pedido</button>
+                            <div class="col-md-12 mb-3">
+                                <label for="nome" class="form-label">Nome:</label>
+                                <input type="text" class="form-control" id="nomeCliente">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="telefone" class="form-label">Telefone:</label>
+                                <input type="tel" class="form-control" id="telefone">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="celular" class="form-label">Celular:</label>
+                                <input type="tel" class="form-control" id="celular">
+                            </div>
+                            <div class="col-sm-4 col-md-4 mb-3 d-flex align-items-end">
+                                <div class="position-relative input-icon">
+                                    <label for="cep" class="form-label">CEP:</label>
+                                    <input type="text" class="form-control" id="cep">
+                                    <i id="limparCep" class="bi bi-x-lg"></i>
+                                </div>
+                                <button type="button" class="btn btn-primary ms-1" id="btn-buscar-cep">
+                                    <i class="bi bi-search" height="20"></i>
+                                </button>
+                            </div>
+                            <div class="col-sm-8">
+                                <label for="endereco" class="form-label">Endereço completo:</label>
+                                <input type="text" class="form-control" id="endereco">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="bairro" class="form-label">Bairro:</label>
+                                <input type="text" class="form-control" id="bairro">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="cidade" class="form-label">Cidade:</label>
+                                <input type="text" class="form-control" id="cidade">
+                            </div>
+                            <div class="col-md-2 mb-3">
+                                <label for="estado" class="form-label">Estado:</label>
+                                <input type="text" class="form-control" id="estado">
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label for="complemento" class="form-label">Complemento:</label>
+                                <input type="text" class="form-control" id="complemento"
+                                    placeholder="Quadra:02, Lote:15, apartamento, casa ">
+                            </div>
+                            <hr>
+                            <div class="col-6">
+                                <label for="formaPagamento" class="form-label">Forma de pagamento:</label>
+                                <select id="formaPagamento" class="form-select">
+                                    <option selected>Dinheiro</option>
+                                    <option>...</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <label for="parcelamento" class="form-label">Parcelamento:</label>
+                                <select id="parcelamento" class="form-select">
+                                    <option selected>Á vista</option>
+                                    <option>1x de R$ 0,00</option>
+                                    <option>2x de R$ 0,00 sem juros</option>
+                                </select>
+                            </div>
+                            <div class="d-grid">
+                                <button id="btn_finalizar" type="submit" class="btn btn-success mt-4">Finalizar
+                                    pedido</button>
+                            </div>
                         </div>
                     </div>
+                </form>
+                <div class="finaliza-compra__resumo col-sm-12 col-lg-4 white-square ">
+                    <div class="pt-3 ps-4 d-flex justify-content-between">
+                        <h2>Resumo do pedido</h2>
+                        <i id="pedidos" class="fs-2 bi bi-bag-heart"></i>
+                    </div>
+                    <div class="container p-sm-2"></div>
+                    <ul id="lista-pedido" class="row"></ul>
+                    <i class="bi bi-bag-x-fill "></i>
+                    <p class="fs-2">Sua sacola está vazia!</p>
+                    <p class="fw-bold text-end"><span id="valor-total">0.00</span></p>
                 </div>
-            </form>
-            <div class="col-sm-12 col-lg-4 white-square ">
-                <div class="pt-3 ps-4 d-flex justify-content-between">
-                    <h2>Resumo do pedido</h2>
-                    <i id="pedidos" class="fs-2 bi bi-bag-heart"></i>
-                </div>
-                <div class="container p-sm-2"></div>
-                <ul id="lista-pedido" class="row"></ul>
-                <p class="fw-bold text-end"><span id="valor-total">0.00</span></p>
-            </div>
+    </section>
 
-            <!-- BOTAO CARRINHO -->
-            <div>
+    <!-- BOTAO CARRINHO -->
+    <div>
 
-                <a class="btn-carrinho" href="#lista-pedido">
-                    <i class="bi bi-bag-heart fs-3 fw-bold btn-carrinho__icon"></i>
-                    <span class="text-white" id="contador-carrinho">0</span>
-                </a>
+        <a class="btn-carrinho" href="#lista-pedido">
+            <i class="bi bi-bag-heart fs-3 fw-bold btn-carrinho__icon"></i>
+            <span class="text-white" id="contador-carrinho">0</span>
+        </a>
 
-            </div>
-        </div>
+    </div>
+    </div>
     </div>
 
     <!-- MODAL -->
