@@ -1,3 +1,4 @@
+let carrinho = [];
 
 function BuscarEndereco(botao, campos) {
     this.botao = botao;
@@ -50,25 +51,23 @@ $('#limparCep').on('click',function(){
     $('#estado').val('');
 })
 
-let carrinho = [];
-
-
 $('#menu').click(function (event) {
-    let parentButton = event.target.closest('.card-button');
+    let parentButton = event.target.closest('#card-button');
     let $button = $(parentButton);
+    let imgProduto = $button.attr('data-img')
     let nomeProduto = $button.attr('data-nome');
     let valor = parseFloat($button.attr('data-valor'));
+    console.log(imgProduto);
 
     if (parentButton) {
 
-        adicionaPedido(nomeProduto, valor);
-        
+        adicionaPedido(imgProduto, nomeProduto, valor);
     }
 })
 
 // FUNÇÃO PARA ADICIONAR NO CARRINHO
 
-function adicionaPedido(nomeProduto, valor) {
+function adicionaPedido(imgProduto, nomeProduto, valor) {
 
     const itemDuplicado = carrinho.find(item => item.nomeProduto === nomeProduto);
 
@@ -77,6 +76,7 @@ function adicionaPedido(nomeProduto, valor) {
         
     }else{
         carrinho.push({
+            imgProduto,
             nomeProduto,
             valor,
             quantidade:1
@@ -107,6 +107,7 @@ function atualizaCarrinho(){
             <div class=" p-0 mb-3"> 
             
             <div> 
+                <img class="w-50 mb-3 ms-3" src="${item.imgProduto}">
                 <p class="fw-bold">${item.nomeProduto}</p>
                 <p>Quantidade: ${item.quantidade}</p>
                 <p class="mt-2"> ${item.valor.toFixed(2)} </p>
