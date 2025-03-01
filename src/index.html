@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container px-4">
         <header>
             <div class="background__pink">
                 <ul class="pe-3 m-0 d-flex justify-content-end">
@@ -294,14 +294,10 @@
                                 <input type="text" class="form-control" id="nomeCliente">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="telefone" class="form-label">Telefone:</label>
-                                <input type="tel" class="form-control" id="telefone">
-                            </div>
-                            <div class="col-md-6 mb-3">
                                 <label for="celular" class="form-label">Celular:</label>
                                 <input type="tel" class="form-control" id="celular">
                             </div>
-                            <div class="col-sm-4 col-md-4 mb-3 d-flex align-items-end">
+                            <div class="col-sm-5 col-md-4 mb-3 d-flex align-items-end">
                                 <div class="position-relative finalizar-compra__cep">
                                     <label for="cep" class="form-label">CEP:</label>
                                     <input type="text" class="form-control" id="cep">
@@ -311,7 +307,7 @@
                                     <i class="bi bi-search" height="20"></i>
                                 </button>
                             </div>
-                            <div class="col-sm-8">
+                            <div class="col-sm-7">
                                 <label for="endereco" class="form-label">Endereço completo:</label>
                                 <input type="text" class="form-control" id="endereco">
                             </div>
@@ -319,33 +315,12 @@
                                 <label for="bairro" class="form-label">Bairro:</label>
                                 <input type="text" class="form-control" id="bairro">
                             </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="cidade" class="form-label">Cidade:</label>
-                                <input type="text" class="form-control" id="cidade">
-                            </div>
-                            <div class="col-md-2 mb-3">
-                                <label for="estado" class="form-label">Estado:</label>
-                                <input type="text" class="form-control" id="estado">
-                            </div>
                             <div class="col-12 mb-3">
                                 <label for="complemento" class="form-label">Complemento:</label>
                                 <input type="text" class="form-control" id="complemento"
                                     placeholder="Quadra:02, Lote:15, apartamento, casa ">
                             </div>
                             <hr>
-                            <div class="col-6">
-                                <label for="formaPagamento" class="form-label">Forma de pagamento:</label>
-                                <select id="formaPagamento" class="form-select">
-                                    <option selected>Dinheiro</option>
-                                    <option>...</option>
-                                </select>
-                            </div>
-                            <div class="col-6">
-                                <label for="parcelamento" class="form-label">Parcelamento:</label>
-                                <select id="parcelamento" class="form-select">
-                                    <option selected>Á vista</option>
-                                </select>
-                            </div>
                             <div class="d-grid">
                                 <button id="btn_finalizar" type="submit" class="btn btn-success mt-4">Finalizar
                                     pedido</button>
