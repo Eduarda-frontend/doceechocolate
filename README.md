@@ -1,4 +1,6 @@
 # 🍫 **Doce & Chocolate** - Cardápio Online 🍰
+![image](https://github.com/user-attachments/assets/3bfcd22f-db70-4a75-b6d4-8c8266c32e93)
+
 
 ## 📜 Descrição
 
