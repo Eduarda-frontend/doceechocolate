@@ -11,7 +11,7 @@ A aplicação é construída utilizando HTML, CSS, JavaScript e integrações co
 Além disso, utilizamos o **Grunt** para automação das tarefas de desenvolvimento, como a compilação de arquivos, minificação e transferência dos arquivos da pasta **`dev`** para a pasta **`dist`**, garantindo que o ambiente de produção esteja sempre otimizado.
 
 Você pode visualizar a versão online do projeto acessando o seguinte link:  
-👉 [Acesse o cardápio na Vercel]([https://eduardadoceechocolate.vercel.app/](https://doceechocolate.vercel.app/))
+👉 [Acesse o cardápio na Vercel](https://doceechocolate.vercel.app/)
 
 ## ⚙️ Funcionalidades
 
